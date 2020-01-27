@@ -11,22 +11,55 @@ class WaffleChart extends React.Component<waffleProps>{
         super(props)
     }
 
-    data = [
-        { "name": "type 1", "value": 102},
-        { "name": "type 2", "value": 65},
-        { "name": "type 3", "value": 43},
-        { "name": "type 4", "value": 12}
-      ];
+    data = [{
+      "year": 2015,
+      "tour": "The Red Bullet",
+      "venue": "Rosemont theatre",
+      "capacity": 4400,
+      "boxes": 18
+    },
+    {
+      "year": 2017,
+      "tour": "Wings",
+      "venue": "Allstate arena",
+      "capacity": 18500,
+      "boxes": 74
+    },
+    {
+      "year": 2018,
+      "tour": "Love Yourself",
+      "venue": "United center",
+      "capacity": 23500,
+      "boxes": 94
+    },
+    {
+      "year": 2019,
+      "tour": "Love Yourself - Speak Yourself",
+      "venue": "Soldier Field",
+      "capacity": 61500,
+      "boxes": 246
+    }
+  ];
     componentDidMount(){
         this.createWaffle();
     }
 
+
     createWaffle(){
+    
+      
         d3.select("#waffle-cont")
         .append("svg")
-        .attr("width",'700px')
+        .attr("width", '700px')
         .attr("height", '500px')
         .classed("waffle-svg-cont", true)
+        .append("g")
+        .selectAll("div")
+        .data(this.data)
+        .enter()
+
+        console.log(this.data)
+
             }
 
     public render() {
