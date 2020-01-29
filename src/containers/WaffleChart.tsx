@@ -1,47 +1,39 @@
 
 import * as React from 'react';
 import * as d3 from "d3";
+import { ResponsiveWaffle } from '@nivo/waffle'
 
 interface waffleProps {
 
 }
 
-class WaffleChart extends React.Component<waffleProps>{
-    constructor(props:any) {
-        super(props)
-    }
+class WaffleChart extends React.Component{
+    
 
-    data = [{
-      "year": 2015,
-      "tour": "The Red Bullet",
-      "venue": "Rosemont theatre",
-      "capacity": 4400,
-      "boxes": 18
-    },
-    {
-      "year": 2017,
-      "tour": "Wings",
-      "venue": "Allstate arena",
-      "capacity": 18500,
-      "boxes": 74
-    },
-    {
-      "year": 2018,
-      "tour": "Love Yourself",
-      "venue": "United center",
-      "capacity": 23500,
-      "boxes": 94
-    },
-    {
-      "year": 2019,
-      "tour": "Love Yourself - Speak Yourself",
-      "venue": "Soldier Field",
-      "capacity": 61500,
-      "boxes": 246
-    }
-  ];
+    data = [
+      {
+        "id": "men",
+        "label": "men",
+        "value": 29.578576611230588,
+        "color": "#468df3"
+      },
+      {
+        "id": "women",
+        "label": "women",
+        "value": 0.588575533698535,
+        "color": "#ba72ff"
+      },
+      {
+        "id": "children",
+        "label": "children",
+        "value": 27.31733112966964,
+        "color": "#a1cfff"
+      }
+    ];
+
     componentDidMount(){
-        this.createWaffle();
+       // this.createWaffle();
+       console.log(this.data)
     }
 
 
@@ -66,7 +58,25 @@ class WaffleChart extends React.Component<waffleProps>{
         return (
           // Nos basta con un sencillo DIV.
           // Tan sólo queremos su referencia.
-          <div id="waffle-cont" />
+          //<div id="waffle-cont" />
+          <div className="waffle-cont" >  
+            <ResponsiveWaffle
+              data={this.data}
+              total={100}
+              rows={18}
+              emptyOpacity={0.45}
+              columns={14}
+              margin={{ top: 10, right: 10, bottom: 10, left: 120 }}
+              borderColor={{ from: 'color', modifiers: [ [ 'darker', 0.3 ] ] }}
+              animate={true}
+              motionStiffness={90}
+              motionDamping={11}
+              
+            /> 
+  
+
+          </div>
+         
         );
       }
 }
